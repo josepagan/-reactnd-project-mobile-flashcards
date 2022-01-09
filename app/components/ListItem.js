@@ -12,7 +12,7 @@ const ListItem = ({ id }) => {
     return (
         <>
             <View style={styles.top}>
-                <Text style={{ color: "white" }}>{name}</Text>
+                <Text style={{ color: "white", paddingTop: 5, paddingLeft: 10 }}>{name}</Text>
                 <View style={styles.inner}>
                     <Text style={{ color: "white", fontSize: 50 }}>{cardsCount}</Text>
                 </View>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     top: {
         // width: 100,
         // height: 100,
-        flex: 1,
+        flex: 1 / 3,
         flexDirection: "column",
         margin: 5,
         backgroundColor: "green",
@@ -36,7 +36,9 @@ const styles = StyleSheet.create({
 
     },
     inner: {
-        height: 100,
+        justifyContent: "center",
+        alignItems: "center",
+        height: 70,
         fontSize: 30
     }
     // bottom: { flex: 1 }
