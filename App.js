@@ -7,9 +7,11 @@ import 'react-native-get-random-values'
 import { store, persistor } from './app/store/store';
 import AppMain from './app/AppMain';
 import { NavigationContainer } from '@react-navigation/native';
-// import { dirtyReset } from './app/store/decksSlice';
+import { dirtyCardsReset } from './app/store/cardsSlice';
+import { dirtyDecksReset } from './app/store/decksSlice';
 export default function App() {
-  // store.dispatch(dirtyReset())
+  // store.dispatch(dirtyCardsReset())
+  // store.dispatch(dirtyDecksReset())
   // console.log("store", store.getState())
   return (
     <Provider store={store}>

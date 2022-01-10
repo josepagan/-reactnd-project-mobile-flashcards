@@ -17,7 +17,7 @@ function DeckListScreen({ navigation }) {
                     data={decks.allIds}
                     keyExtractor={(item, index) => index.toString()}
                     // renderItem={({ item }) => <Text style={{ fontSize: 25 }}>{item}</Text>}
-                    renderItem={({ item }) => <ListItem id={item} />}
+                    renderItem={({ item }) => <ListItem deckId={item} navigation={navigation} />}
                     numColumns={3}
                 />
                 <Text>fin de flatlist</Text>
