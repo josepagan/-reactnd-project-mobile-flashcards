@@ -8,7 +8,7 @@ import ListItem from '../components/ListItem';
 
 function DeckListScreen({ navigation }) {
     const decks = useSelector(state => state.decks)
-    console.log("decks:", decks)
+    // console.log("decks:", decks)
     return (
         <View style={styles.background}>
             <View style={{ flex: 4, backgroundColor: "white" }}>

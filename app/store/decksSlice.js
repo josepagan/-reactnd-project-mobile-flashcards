@@ -17,7 +17,7 @@ const decksSlice = createSlice({
                 name: action.payload,
                 cards: []
             }
-            console.log(newDeck)
+            // console.log(newDeck)
             state.byId[newDeck.id] = newDeck;
             state.allIds.push(newDeck.id);
 

@@ -5,14 +5,18 @@ import { useSelector } from "react-redux";
 import { GameOver } from "../components/GameOver";
 import { AnswerView } from "../components/AnswerView";
 import { QuestionView } from "../components/QuestionView";
+import { createSelector } from "@reduxjs/toolkit";
+
+//must improve naming
+const currentDeck = createSelector(
+    (state, deckId) => state.decks.byId[deckId],
+    (state) => state.cards.byId,
+    (deck, cards) => deck.cards.map(cardId => cards[cardId])
+)
 
 const QuizScreen = ({ route }) => {
-
     const { deckId } = route.params
-    const deck = useSelector(state => state.decks.byId[deckId])
-    const allCards = useSelector(state => state.cards.byId)
-    const { cards } = deck
-    const quizCards = cards.map(el => allCards[el])
+    const quizCards = useSelector((state) => currentDeck(state, deckId))
 
     const [cardCount, setCardCount] = useState(0)
     const [score, setScore] = useState(0)
@@ -22,7 +26,6 @@ const QuizScreen = ({ route }) => {
     const { question, answer } = quizCards[cardCount]
 
     const handleAnswer = (answer) => {
-        // if (cardsLeft.length === 0) return <GameOver score={score}/>
         if (answer === "CORRECT") {
             setScore(score + 1)
         }
