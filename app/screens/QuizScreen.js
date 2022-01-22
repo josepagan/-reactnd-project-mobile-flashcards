@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Text } from "react-native";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { GameOver } from "../components/GameOver";
 import { AnswerView } from "../components/AnswerView";
 import { QuestionView } from "../components/QuestionView";
 import { createSelector } from "@reduxjs/toolkit";
+import { quizGameOver } from "../store/notificationSlice";
 
 //must improve naming
 const currentDeck = createSelector(
@@ -15,6 +17,7 @@ const currentDeck = createSelector(
 )
 
 const QuizScreen = ({ route }) => {
+    const dispatch = useDispatch()
     const { deckId } = route.params
     const quizCards = useSelector((state) => currentDeck(state, deckId))
 
@@ -29,7 +32,11 @@ const QuizScreen = ({ route }) => {
         if (answer === "CORRECT") {
             setScore(score + 1)
         }
-        if (cardCount === quizCards.length - 1) { setGameOver(true) }
+        if (cardCount === quizCards.length - 1) {
+
+            dispatch(quizGameOver())
+            setGameOver(true)
+        }
         else {
             setCardCount(cardCount + 1)
             setShowingAnser(false)

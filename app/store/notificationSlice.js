@@ -8,7 +8,17 @@ export const scheduleNotification = createAsyncThunk("notifications/schedule", a
     //if date is same as toda, schedule notification for tomorrow
     //if date is previous , schedule for today.
     const { hour, minute } = getState().notifications.time
-    const trigger = new Date().setHours(hour, minute)
+    const { lastQuizDate } = getState().notifications
+
+    const trigger = new Date().setHours(hour, minute, 0, 0)
+    const now = new Date()
+
+    //IF the prefered quiz time was earlier today
+    //OR we have already done a test today.  schedule for tomorrow 
+    if (now > trigger || now.toDateString() === lastQuizDate) {
+        trigger.setDate(trigger.getDate() + 1)
+    }
+
     const id = await scheduleNotificationAsync({
         content: {
             title: "Time to answer some questions",
@@ -27,10 +37,15 @@ const notificationSlice = createSlice({
     name: 'notifications',
     initialState: {
         time: { hour: 20, minute: 0 },
-        lastQuizTimestamp: null,
+        lastQuizDate: null,
+        //use 
         scheduled: []
     },
     reducers: {
+        quizGameOver(state, action) {
+            const date = new Date()
+            state.lastQuizDate = date.toDateString()
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(scheduleNotification.fulfilled, (state, action) => {
@@ -41,5 +56,5 @@ const notificationSlice = createSlice({
 
 
 const { actions, reducer } = notificationSlice
-// export const { } = actions
+export const { quizGameOver } = actions
 export default reducer
