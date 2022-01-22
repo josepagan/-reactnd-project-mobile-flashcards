@@ -1,3 +1,9 @@
+if (__DEV__) {
+  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
+}
+
+import Reactotron from 'reactotron-react-native'
+
 // import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
 import { Provider } from 'react-redux';
@@ -30,6 +36,10 @@ export default function App() {
   // store.dispatch(dirtyCardsReset())
   // store.dispatch(dirtyDecksReset())
   // console.log("store", store.getState())
+  useEffect(() => {
+    Reactotron.log('hello rendering world')
+  }, [])
+  // Reactotron.log('hello rendering world')
 
   return (
     <Provider store={store}>

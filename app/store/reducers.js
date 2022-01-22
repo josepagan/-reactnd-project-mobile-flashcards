@@ -4,8 +4,10 @@ import { combineReducers } from "@reduxjs/toolkit";
 // import counter from './counter'
 import decksReducer from './decksSlice'
 import cardsReducer from './cardsSlice'
+import notificationsReducer from './notificationSlice'
 
 export default combineReducers({
     decks: decksReducer,
-    cards: cardsReducer
+    cards: cardsReducer,
+    notifications: notificationsReducer
 })

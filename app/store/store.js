@@ -1,5 +1,7 @@
 // import { combineReducers } from "@reduxjs/toolkit";
-
+import logger from 'redux-logger'
+import Reactotron from '../../ReactotronConfig';
+const reactotronEnhacer = Reactotron.createEnhancer()
 
 import { configureStore } from '@reduxjs/toolkit'
 import {
@@ -32,7 +34,8 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }),
+        }).concat(logger),
+    //in theory i can concat here Reactotron enhancer but i get an obscure error, redux logger seems fine
 })
 
 export let persistor = persistStore(store)
