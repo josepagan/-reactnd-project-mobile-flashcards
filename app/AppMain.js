@@ -1,4 +1,3 @@
-// import { NavigationContainer } from "@react-navigation/native";
 import DeckListScreen from "./screens/DeckListScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Button, Pressable } from "react-native"
@@ -8,8 +7,14 @@ import NewQuestionScreen from "./screens/NewQuestionScreen";
 import QuizScreen from "./screens/QuizScreen";
 import { Entypo } from '@expo/vector-icons';
 import Settings from "./screens/Settings";
+import { useDispatch } from "react-redux";
+import { getAllNotifications } from "./store/notificationSlice";
+import { useEffect } from "react";
 const Stack = createNativeStackNavigator()
 const AppMain = () => {
+    const dispatch = useDispatch()
+    dispatch(getAllNotifications())
+
     return (
         <Stack.Navigator>
             <Stack.Screen
