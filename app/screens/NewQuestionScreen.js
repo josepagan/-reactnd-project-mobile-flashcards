@@ -10,7 +10,6 @@ const NewQuestionScreen = ({ route }) => {
 
     const dispatch = useDispatch()
     const { deckId } = route.params
-    // console.log("DECK ID OMG", deckId)
 
     const [questionText, setQuestionText] = useState("");
     const [answerText, setAnswerText] = useState("");
@@ -25,10 +24,9 @@ const NewQuestionScreen = ({ route }) => {
             deckId
 
         }
-        console.log("create card button pressed", createCard(cardPayload))
         dispatch(createCard(cardPayload));
-        // navigation.navigate("Decks")
-
+        setQuestionText("")
+        setAnswerText("")
     }
 
     return (
@@ -65,7 +63,6 @@ const NewQuestionScreen = ({ route }) => {
 
                 <Button title="ok" onPress={handleButton} />
             </View>
-            {/* <View style={{ backgroundColor: "red" }} ></View> */}
         </>
 
     );
@@ -79,7 +76,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         fontSize: 25,
-        // justifyContent: "flex-end"
     },
 });
 export default NewQuestionScreen;

@@ -1,8 +1,9 @@
-import { Button, Text, View, Switch } from "react-native";
+import { Button, Text, View, Switch, Pressable, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { scheduleNotification, shutDownNotifications } from "../store/notificationSlice";
+import { deleteAll } from "../store/decksSlice";
 
 
 const Notifications = () => {
@@ -54,11 +55,64 @@ const Notifications = () => {
     )
 }
 
+
+
+export function CustomButton(props) {
+    const { onPress, title } = props;
+    return (
+        <Pressable style={styles.button} onPress={onPress}>
+            <Text style={styles.text}>{title}</Text>
+        </Pressable>
+    );
+}
+
+const styles = StyleSheet.create({
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: 'red',
+    },
+    text: {
+        fontSize: 16,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'white',
+    },
+});
+
+
+const DeleteAll = () => {
+    const dispatch = useDispatch();
+    const handleButton = () => {
+        console.log("button pressed")
+        dispatch(deleteAll())
+
+    }
+    return (
+        <>
+            <Text style={{ fontSize: 20, fontWeight: "700" }}>Delete All</Text>
+            <Text>Reset the app to default settings, all cards and decks will be deleted</Text>
+            <CustomButton title="Delete All Data" onPress={handleButton} />
+
+
+        </>
+    )
+}
+
 const Settings = () => {
     return (
         <View style={{ backgroundColor: "#ededed", padding: 20 }}>
+
             <SettingsChild>
                 <Notifications />
+            </SettingsChild>
+            <SettingsChild>
+                <DeleteAll />
             </SettingsChild>
 
         </View>
@@ -69,7 +123,8 @@ const SettingsChild = ({ children }) =>
     <View style={{
         backgroundColor: "white",
         borderRadius: 5,
-        padding: 20
+        padding: 20,
+        marginBottom: 20
     }}>{children}
     </View>
 

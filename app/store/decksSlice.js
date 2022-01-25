@@ -23,7 +23,7 @@ const decksSlice = createSlice({
 
             return state
         },
-        dirtyDecksReset() {
+        deleteAll() {
             return { byId: {}, allIds: [] }
         }
 
@@ -41,5 +41,5 @@ const decksSlice = createSlice({
 })
 
 const { actions, reducer } = decksSlice
-export const { createDeck, dirtyDecksReset } = actions
+export const { createDeck, deleteAll } = actions
 export default reducer
