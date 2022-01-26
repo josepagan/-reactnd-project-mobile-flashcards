@@ -19,7 +19,7 @@ function DeckListScreen({ navigation }) {
                 />
             </View>
             <View style={{ flex: 1, backgroundColor: "pink" }}>
-                <Button title='test' onPress={() => { navigation.navigate("New Deck") }} />
+                <Button title='create new Deck' onPress={() => { navigation.navigate("New Deck") }} />
             </View>
         </View>
     );

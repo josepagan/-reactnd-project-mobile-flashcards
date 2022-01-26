@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
 
 
 const DeleteAll = () => {
+    console.log("deleteAll", deleteAll())
     const dispatch = useDispatch();
     const handleButton = () => {
         console.log("button pressed")

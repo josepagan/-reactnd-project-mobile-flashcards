@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import 'react-native-get-random-values'
 import { v4 as uuid } from 'uuid'
-import { deleteAll } from "./decksSlice";
 
 const cardsSlice = createSlice({
     name: 'cards',
@@ -28,12 +27,12 @@ const cardsSlice = createSlice({
 
     },
     extraReducers: (builder) => {
-        builder.addCase(deleteAll, (state, action) => {
+        builder.addCase('decks/deleteAll', (state, action) => {
             return { byId: {}, allIds: [] }
         })
     }
 })
 
 const { actions, reducer } = cardsSlice
-export const { createCard, dirtyCardsReset } = actions
+export const { createCard } = actions
 export default reducer

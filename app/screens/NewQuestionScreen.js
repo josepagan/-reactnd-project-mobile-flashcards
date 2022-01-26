@@ -17,6 +17,7 @@ const NewQuestionScreen = ({ route }) => {
     const handleAnswerTextChange = value => setAnswerText(value)
 
     const handleButton = () => {
+        if (!answerText || !questionText) return
         const cardPayload = {
             id: uuid(),
             question: questionText,
@@ -32,34 +33,31 @@ const NewQuestionScreen = ({ route }) => {
     return (
         <>
             <View style={{ flex: 2 }}>
-                <Text style={{ fontSize: 20 }}>Question:</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={handleQuestionTextChange}
                     value={questionText}
-                    placeholder="..."
+                    placeholder="Question..."
                     textAlignVertical="top"
                     multiline={true}
-
                 />
             </View>
 
 
-            <View style={{ flex: 2, justifyContent: "flex-start" }}>
+            <View style={{ flex: 2 }}>
 
-                <Text style={{ fontSize: 20 }}>Answer:</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={handleAnswerTextChange}
                     value={answerText}
-                    placeholder="..."
+                    placeholder="Answer..."
                     textAlignVertical="top"
                     multiline={true}
                 />
             </View>
 
 
-            <View style={{ maxHeight: 200 }}>
+            <View>
 
                 <Button title="ok" onPress={handleButton} />
             </View>
