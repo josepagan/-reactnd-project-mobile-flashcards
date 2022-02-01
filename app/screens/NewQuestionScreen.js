@@ -29,8 +29,8 @@ const NewQuestionScreen = ({ route }) => {
   };
 
   return (
-    <>
-      <View style={{ flex: 2 }}>
+    <View style={{ backgroundColor: "lightgray" }}>
+      <View>
         <TextInput
           style={styles.input}
           onChangeText={handleQuestionTextChange}
@@ -41,7 +41,7 @@ const NewQuestionScreen = ({ route }) => {
         />
       </View>
 
-      <View style={{ flex: 2 }}>
+      <View>
         <TextInput
           style={styles.input}
           onChangeText={handleAnswerTextChange}
@@ -53,9 +53,10 @@ const NewQuestionScreen = ({ route }) => {
       </View>
 
       <View>
-        <Button title="ok" onPress={handleButton} />
+        <Button title="SAVE" onPress={handleButton} />
       </View>
-    </>
+      <View style={{ backgroundColor: "lightgray" }}></View>
+    </View>
   );
 };
 
@@ -66,6 +67,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     fontSize: 25,
+    borderRadius: 10,
+    backgroundColor: "white"
   },
 });
 export default NewQuestionScreen;

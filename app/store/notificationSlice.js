@@ -37,7 +37,6 @@ export const scheduleNotification = createAsyncThunk("notifications/schedule", a
 
 
     dispatch(getAllNotifications())
-    return id
 })
 
 
@@ -56,7 +55,7 @@ const notificationSlice = createSlice({
     initialState: {
         time: { hour: 20, minute: 0 },
         lastQuizDate: null,
-        //use 
+        active: false,
         scheduled: []
     },
     reducers: {
@@ -66,14 +65,15 @@ const notificationSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        // builder.addCase(scheduleNotification.fulfilled, (state, action) => {
-        //     state.scheduled.push(action.payload)
-        // })
+        builder.addCase(scheduleNotification.fulfilled, (state, action) => {
+            state.active = true
+        })
         builder.addCase(getAllNotifications.fulfilled, (state, action) => {
             state.scheduled = action.payload
         })
         builder.addCase(shutDownNotifications.fulfilled, (state) => {
-            state.scheduled = []
+            state.scheduled = [];
+            state.active = false;
         })
     }
 })

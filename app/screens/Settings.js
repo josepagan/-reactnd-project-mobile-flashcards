@@ -16,19 +16,6 @@ const Settings = () => {
   );
 };
 
-// const SettingsChild = ({ children }) => (
-//   <View
-//     style={{
-//       backgroundColor: "white",
-//       borderRadius: 5,
-//       padding: 20,
-//       marginBottom: 20,
-//     }}
-//   >
-//     {children}
-//   </View>
-// );
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",

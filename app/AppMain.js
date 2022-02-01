@@ -7,13 +7,19 @@ import NewQuestionScreen from "./screens/NewQuestionScreen";
 import QuizScreen from "./screens/QuizScreen";
 import { Entypo } from "@expo/vector-icons";
 import Settings from "./screens/Settings";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllNotifications } from "./store/notificationSlice";
 import { useEffect } from "react";
 const Stack = createNativeStackNavigator();
+import { scheduleNotification } from "./store/notificationSlice";
 const AppMain = () => {
+  const notificationStatus = useSelector(state => state.notifications.active)
   const dispatch = useDispatch();
-  dispatch(getAllNotifications());
+  // dispatch(getAllNotifications());
+
+  useEffect(() => {
+    if (notificationStatus) dispatch(scheduleNotification())
+  }, [])
 
   return (
     <Stack.Navigator>

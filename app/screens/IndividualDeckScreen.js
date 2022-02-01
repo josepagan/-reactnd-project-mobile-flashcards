@@ -1,18 +1,17 @@
 import { View, Button, Text } from "react-native";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const IndividualDeckScreen = ({ route, navigation }) => {
   const { deckId } = route.params;
   const deck = useSelector((state) => state.decks.byId[deckId]);
-  const { name, cards } = deck;
+  const { cards } = deck;
 
   return (
     <>
       <View
         style={{
           flex: 4,
-          backgroundColor: "green",
+          backgroundColor: "navy",
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -25,6 +24,7 @@ const IndividualDeckScreen = ({ route, navigation }) => {
           title="Start Quiz"
           onPress={() => navigation.navigate("Quiz", { deckId })}
         />
+        <View style={{ height: 10 }} />
         <Button
           title="Add New Question"
           onPress={() => navigation.navigate("New Question", { deckId })}

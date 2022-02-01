@@ -1,9 +1,8 @@
-import { Button, Text, View, Switch, Pressable, StyleSheet } from "react-native";
+import { Text, View, Switch } from "react-native";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { scheduleNotification, shutDownNotifications } from "../store/notificationSlice";
-import { deleteAll } from "../store/decksSlice";
 import { createSelector } from "@reduxjs/toolkit";
 
 const notificationsSelector = createSelector(
@@ -20,10 +19,12 @@ const notificationsSelector = createSelector(
 
 
 const Notifications = () => {
+    //TODO Feature to change the time of the notificatin, currently is hardwired at 20:00
 
     const dispatch = useDispatch();
     const notifications = useSelector(notificationsSelector)
-    const [isEnabled, setIsEnabled] = useState(notifications.length ? true : false);
+    const notificationsStatus = useSelector(state => state.notifications.active)
+    const [isEnabled, setIsEnabled] = useState(notificationsStatus);
 
     const toggleSwitch = (switchValue) => {
         if (switchValue) {

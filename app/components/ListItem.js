@@ -3,8 +3,6 @@ import { useSelector } from "react-redux";
 
 const ListItem = ({ deckId, navigation }) => {
     const deck = useSelector(state => state.decks.byId[deckId])
-    // console.log("deck from ListItem", deck)
-    // console.log("deckId from Listitem", deckId)
     const { name } = deck
     const cardsCount = deck.cards.length
 
@@ -26,12 +24,9 @@ const ListItem = ({ deckId, navigation }) => {
 }
 const styles = StyleSheet.create({
     top: {
-        // width: 100,
-        // height: 100,
-        // flex: 1 / 3,
         flexDirection: "column",
         margin: 5,
-        backgroundColor: "green",
+        backgroundColor: "navy",
         color: "white",
         borderRadius: 10
 

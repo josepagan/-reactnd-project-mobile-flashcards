@@ -14,6 +14,7 @@ const DeleteAll = () => {
             <Text>
                 Reset the app to default settings, all cards and decks will be deleted
             </Text>
+            {/* TODO: Modify customButton to offer some feedback when pressed */}
             <CustomButton title="Delete All Data" onPress={handleButton} />
         </>
     );

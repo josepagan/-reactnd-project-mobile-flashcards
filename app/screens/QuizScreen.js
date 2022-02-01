@@ -7,7 +7,8 @@ import { GameOver } from "../components/GameOver";
 import { AnswerView } from "../components/AnswerView";
 import { QuestionView } from "../components/QuestionView";
 import { createSelector } from "@reduxjs/toolkit";
-import { quizGameOver } from "../store/notificationSlice";
+import { quizGameOver, scheduleNotification } from "../store/notificationSlice";
+// import { scheduleNotification } from "../store/notificationSlice";
 
 //must improve naming
 const currentDeck = createSelector(
@@ -32,6 +33,7 @@ const QuizScreen = ({ route }) => {
         if (answer === "CORRECT") {
             setScore(score + 1)
         }
+        //gameover events
         if (cardCount === quizCards.length - 1) {
 
             dispatch(quizGameOver())

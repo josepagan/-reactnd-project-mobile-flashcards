@@ -26,7 +26,7 @@ function DeckListScreen({ navigation }) {
           numColumns={3}
         />
       </View>
-      <View style={{ flex: 1, backgroundColor: "pink" }}>
+      <View style={{ flex: 1, backgroundColor: "lightgray" }}>
         <Button
           title="create new Deck"
           onPress={() => {
