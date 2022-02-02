@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const IndividualDeckScreen = ({ route, navigation }) => {
   const { deckId } = route.params;
   const deck = useSelector((state) => state.decks.byId[deckId]);
-  const { cards } = deck;
+  const { name, cards } = deck;
 
   return (
     <>
@@ -16,6 +16,7 @@ const IndividualDeckScreen = ({ route, navigation }) => {
           alignItems: "center",
         }}
       >
+        <Text style={{ color: "white", fontSize: 75 }}>{name}</Text>
         <Text style={{ color: "white", fontSize: 150 }}>{cards.length}</Text>
         <Text style={{ color: "white", fontSize: 20 }}>Cards</Text>
       </View>
