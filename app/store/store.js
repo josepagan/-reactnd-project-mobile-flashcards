@@ -1,4 +1,4 @@
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 
 import { configureStore } from '@reduxjs/toolkit'
 import {
@@ -13,7 +13,6 @@ import {
 } from 'redux-persist'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// import App from './App'
 import rootReducer from './reducers'
 
 const persistConfig = {
@@ -32,7 +31,7 @@ export const store = configureStore({
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
         })
-            .concat(logger),
+    // .concat(logger),
 })
 
 export let persistor = persistStore(store)
