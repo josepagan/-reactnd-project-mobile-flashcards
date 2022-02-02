@@ -1,11 +1,14 @@
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 
-export function GameOver({ score }) {
-    return <>
-        <View>
-            <Text style={{ fontSize: 50 }}>Game Over</Text>
-            <Text style={{ fontSize: 50 }}>Final Score: {score} </Text>
-
-        </View>
-    </>;
+export function GameOver({ score, handleRestart }) {
+    return (
+        <>
+            <View>
+                <Text style={{ fontSize: 50 }}>Game Over</Text>
+                <Text style={{ fontSize: 50, color: "navy" }}>Final Score: {score} </Text>
+                <Button title="Restart Quiz" onPress={handleRestart} />
+                <View style={{ height: 15 }} />
+            </View>
+        </>
+    )
 }

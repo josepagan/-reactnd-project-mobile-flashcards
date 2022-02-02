@@ -20,16 +20,17 @@ const IndividualDeckScreen = ({ route, navigation }) => {
         <Text style={{ color: "white", fontSize: 150 }}>{cards.length}</Text>
         <Text style={{ color: "white", fontSize: 20 }}>Cards</Text>
       </View>
+      <View style={{ height: 10 }} />
       <View style={{ flex: 2, backgroundColor: "white" }}>
         <Button
           title="Start Quiz"
-          onPress={() => navigation.navigate("Quiz", { deckId })}
+          onPress={() => navigation.navigate("Quiz", { deckId, name })}
         />
         <View style={{ height: 10 }} />
         <Button
           title="Add New Question"
-          onPress={() => navigation.navigate("New Question", { deckId })}
-        ></Button>
+          onPress={() => navigation.navigate("New Question", { deckId, name })}
+        />
       </View>
     </>
   );

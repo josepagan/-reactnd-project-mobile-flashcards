@@ -1,25 +1,14 @@
 import DeckListScreen from "./screens/DeckListScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Button, Pressable } from "react-native";
+import { Pressable } from "react-native";
 import NewDeckForm from "./screens/NewDeckScreen";
 import IndividualDeckScreen from "./screens/IndividualDeckScreen";
 import NewQuestionScreen from "./screens/NewQuestionScreen";
 import QuizScreen from "./screens/QuizScreen";
 import { Entypo } from "@expo/vector-icons";
 import Settings from "./screens/Settings";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllNotifications } from "./store/notificationSlice";
-import { useEffect } from "react";
 const Stack = createNativeStackNavigator();
-import { scheduleNotification } from "./store/notificationSlice";
 const AppMain = () => {
-  const notificationStatus = useSelector(state => state.notifications.active)
-  const dispatch = useDispatch();
-  // dispatch(getAllNotifications());
-
-  useEffect(() => {
-    if (notificationStatus) dispatch(scheduleNotification())
-  }, [])
 
   return (
     <Stack.Navigator>
@@ -51,8 +40,23 @@ const AppMain = () => {
           animation: "slide_from_right",
         })}
       />
-      <Stack.Screen name={"New Question"} component={NewQuestionScreen} />
-      <Stack.Screen name={"Quiz"} component={QuizScreen} />
+      <Stack.Screen
+        name={"Quiz"}
+        component={QuizScreen}
+        options={({ route }) => ({
+          title: `Quiz: ${route.params.name}`,
+          animation: "slide_from_right",
+        })}
+      />
+      <Stack.Screen
+        name={"New Question"}
+        component={NewQuestionScreen}
+        options={({ route }) => ({
+          title: `New Question: ${route.params.name}`,
+          animation: "slide_from_right",
+        })}
+      />
+
       <Stack.Screen name={"Settings"} component={Settings} />
     </Stack.Navigator>
   );

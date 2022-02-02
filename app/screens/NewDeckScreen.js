@@ -16,7 +16,7 @@ const NewDeckForm = ({ navigation }) => {
 
   return (
     <>
-      <Text style={{ fontSize: 30 }}>Name of the new deck:</Text>
+      <Text style={{ fontSize: 30, textAlign: "center" }}>Name of the new deck:</Text>
       <TextInput
         style={styles.input}
         onChangeText={handleTextChange}
